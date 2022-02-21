@@ -1,12 +1,22 @@
-
-
-
-
-
-
-# POC 本地化
+# VERSION：HEXO + Wikitten + Go_UPDATE GOLANG
 
 前言：由于[上一版方案](https://github.com/XRSec/Nat_Poc_All/tree/v0.01)过于臃肿，所以决定重新整理，刚好最近golang挺火的，就当练个手
+
+## Poc 文章申请方式
+
+- 对本仓库的poc进行同步更新，保证poc更新的稳定性
+- issus 申请内测
+- 由于近期特别忙，所以兄弟们帮忙一起维护这个项目了
+- 祝大家早日建立属于自己的通用内网poc平台！
+- 希望兄弟们能为 dev 版本贡献一些代码
+
+## 预览
+
+![image-20220221234444368](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234444368.png)
+
+![image-20220221234545002](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234545002.png)
+
+![image-20220221234602514](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234602514.png)
 
 ## 架构
 
