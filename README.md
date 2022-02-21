@@ -1,12 +1,22 @@
+# VERSION：HEXO + Wikitten + Go_UPDATE GOLANG
 
+前言：由于[上一版方案](https://github.com/XRSec/Nat_Poc_All/tree/v0.01)过于臃肿，所以决定重新整理，刚好最近golang挺火的，就当练个手
 
+## Poc 文章申请方式
 
+- 对本仓库的poc进行同步更新，保证poc更新的稳定性
+- issus 申请内测
+- 由于近期特别忙，所以兄弟们帮忙一起维护这个项目了
+- 祝大家早日建立属于自己的通用内网poc平台！
+- 希望兄弟们能为 dev 版本贡献一些代码
 
+## 预览
 
+![image-20220221234444368](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234444368.png)
 
-# POC 本地化
+![image-20220221234545002](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234545002.png)
 
-前言：由于上一版本方案过于臃肿，所以决定重新整理，刚好最近golang挺火的，就当练个手
+![image-20220221234602514](https://rmt.ladydaily.com/fetch/ZYGG/storage/image-20220221234602514.png)
 
 ## 架构
 
@@ -22,7 +32,7 @@ web：hexo ( theme [Wikitten](https://github.com/zthxxx/hexo-theme-Wikitten))
 ├── main.go ( 主程序 )
 ├── markdown ( Markdown上传文件夹，同 hexo /hexo/source/_posts/ )
 │   └── 任务.md
-├── upd ( 临死文件夹 )
+├── upd ( 临时文件夹 )
 │   ├── poc.png
 │   └── 任务.md
 ├── upload.gtpl ( web页面渲染 )
@@ -30,8 +40,6 @@ web：hexo ( theme [Wikitten](https://github.com/zthxxx/hexo-theme-Wikitten))
 
 3 directories, 7 files
 ```
-
-
 
 ## 需求
 
@@ -43,7 +51,7 @@ web：hexo ( theme [Wikitten](https://github.com/zthxxx/hexo-theme-Wikitten))
 >
 > 希望能够在保存新文件的时候将文件名中的特殊字符做处理，`space` 转化成 `_`， `<>` 转换成 `-` ，并且自动检测原文件内容是否包含 `title` `date` `tag` 关键字，以防冲突
 
-- Input 
+- 快速生成 tag 等信息 
 
 ```bash
 #!/bin/zsh
@@ -56,7 +64,7 @@ echo "---\ntitle: $title\ndate: $2 $3\ntag: \n---\n\n" >> $newdoc
 cat $1 >> $newdoc
 echo "\n> Poc++ has the right to modify and interpret this article.
 ```
-- Output
+- 将本地写好的markdown文件复制到指定位置
 
 ```ini
 if file == /xxxx/xxxx/test.md
@@ -65,17 +73,9 @@ basename $1 .md == test
 newdoc=$posts$title.md == /markdown/test.md
 ```
 
-
-
 ### 页面美化
 
 > 虽然说所有的步骤可以直接通过请求解决，但是还是需要美化一下web上传页面，理论上同html css
-
-
-
-由于近期特别忙，所以兄弟们帮忙一起维护这个项目了
-
-祝大家早日建立属于自己的通用内网poc平台！
 
 ### 图文上传
 
@@ -168,3 +168,10 @@ poc.chion.tech 虚拟机IP
 ## 同步
 
 只需要将 `Markdown` 和图片一起打包就好了，图片使用的是时间戳，可以用 `vscode`  将 `Markdown` 中的图片链接提取并下载，其他的就不用改了
+
+## 测试
+
+```bash
+curl localhost:8081/upload -X POST -F "uploadFile=@/$@" -x "http://localhost:8080"
+```
+
